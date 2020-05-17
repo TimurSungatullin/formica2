@@ -1,0 +1,1 @@
+web: gunicorn formica.wsgi --log-file -
