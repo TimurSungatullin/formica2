@@ -1,4 +1,5 @@
 from django.contrib import auth
+from rest_framework.authtoken.models import Token
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -20,9 +21,10 @@ class LoginView(APIView):
         user = auth.authenticate(username=login, password=password)
 
         if user is not None:
+            token = Token.objects.get_or_create(user=user)
             auth.login(request, user)
             return Response(
-                status=200, data={'message': 'Авторизация прошла успешно'})
+                status=200, data={'token': token[0].key})
         else:
             return Response(
                 status=401, data={'message': 'Неверный логин или пароль'})
@@ -37,3 +39,4 @@ class LogoutView(APIView):
 
         return Response(
                 status=200, data={'message': 'Выход прошел успешно'})
+
