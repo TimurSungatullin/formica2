@@ -10,7 +10,7 @@ django-stub==0.1
 django-stubs==1.5.0
 django-summernote==0.8.11.6
 django-templated-mail==1.1.1
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 djangorestframework-jsonapi==3.1.0
 djangorestframework-jwt==1.11.0
 djangorestframework-stubs==1.1.0
